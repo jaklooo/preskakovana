@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slovenská Preskakovaná (Diagonálna)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Preskakovaná</h1>
+    
+    <!-- Menu System -->
+    <div id="menu-overlay" class="menu-overlay">
+        <div class="menu-container" id="main-menu">
+            <h2>Hlavné Menu</h2>
+            <button class="btn menu-btn" onclick="showModeSelect()">Nová Hra</button>
+        </div>
+
+        <div class="menu-container hidden" id="mode-select">
+            <h2>Vyber režim</h2>
+            <button class="btn menu-btn" onclick="selectMode('pve')">Hráč vs AI</button>
+            <button class="btn menu-btn" onclick="selectMode('pvp')">2 Hráči (Lokálne)</button>
+            <button class="btn menu-btn" onclick="selectMode('online')">Hrať Online</button>
+            <button class="btn menu-btn secondary" onclick="showMainMenu()">Späť</button>
+        </div>
+
+        <div class="menu-container hidden" id="waiting-screen">
+            <h2>Čakám na súpera...</h2>
+            <div class="loader" style="margin: 20px auto; border: 5px solid #f3f3f3; border-top: 5px solid #3498db; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite;"></div>
+            <p>Prosím čakajte, kým sa pripojí iný hráč.</p>
+        </div>
+
+        <div class="menu-container hidden" id="color-select">
+            <h2>Vyber si farbu</h2>
+            <button class="btn menu-btn" onclick="selectColor('white')">Biely (Začína)</button>
+            <button class="btn menu-btn" onclick="selectColor('black')">Čierny</button>
+            <button class="btn menu-btn secondary" onclick="showModeSelect()">Späť</button>
+        </div>
+
+        <div class="menu-container hidden" id="difficulty-select">
+            <h2>Obtiažnosť AI</h2>
+            <button class="btn menu-btn" onclick="startGameAI('easy')">Ľahká</button>
+            <button class="btn menu-btn" onclick="startGameAI('medium')">Stredná</button>
+            <button class="btn menu-btn" onclick="startGameAI('hard')">Ťažká</button>
+            <button class="btn menu-btn secondary" onclick="showColorSelect()">Späť</button>
+        </div>
+    </div>
+
+    <div class="info-panel">
+        <div class="status" id="statusText">Na ťahu: Biely</div>
+        <div id="game-controls">
+            <span id="difficulty-display" style="display:none; margin-right: 10px;">Obtiažnosť: Ľahká</span>
+            <button class="btn" onclick="returnToMenu()">Menu</button>
+        </div>
+    </div>
+
+    <div class="board" id="board">
+        </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
